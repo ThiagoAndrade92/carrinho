@@ -1,0 +1,39 @@
+.produtos {
+   padding: 10px;
+}
+
+.produtos h1 {
+   margin-bottom: 20px;
+}
+
+.produtos ul {
+   list-style: none;
+
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 5px;
+}
+
+.produtos li {
+   text-align: center;
+   font-family: Arial, Helvetica, sans-serif;
+   margin-bottom: 10px;
+   background-color: #f0eeee;
+   padding: 5px;
+   border-radius: 4px;
+}
+
+.produtos button {
+   border: none;
+   margin-top: 5px;
+   background: linear-gradient(to right, #ffa500, #ff4500, #ff0000);
+   padding: 5px;
+   color: #fff;
+   cursor: pointer;
+   transition: all .3s ease-in;
+   width: 100%;
+}
+
+.produtos button:hover {
+   background: linear-gradient(to right, #c98300, #c53501, #cc0101);
+}
