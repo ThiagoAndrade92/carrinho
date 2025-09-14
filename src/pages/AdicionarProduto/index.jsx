@@ -7,14 +7,36 @@ import { Label } from "../../components/Label"
 
 //Css
 import style from './AdicionarProduto.module.css';
+import { useFetch } from "../../hook/UseFetch";
+
+//url
+const url = 'http://localhost:3000/Produtos';
 
 export const AdicionarProduto = () => {
+
+   const { setData } = useFetch();
 
    const [nome, setNome] = useState('');
    const [preco, setPreco] = useState('');
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
+
+      const novoProduto = {
+         nome,
+         preco
+      };
+
+      const res = await fetch(url, {
+         method: "POST",
+         headers: {
+            "Content-type": "application/json"
+         },
+         body: JSON.stringify(novoProduto)
+      });
+
+      const produtoAdicionado = await res.json();
+      setData(prevProduto => [ ...prevProduto, produtoAdicionado])
 
       setNome('');
       setPreco('');

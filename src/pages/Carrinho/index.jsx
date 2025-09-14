@@ -1,9 +1,38 @@
-import { Btn } from '../../components/Btn';
+///Css
 import style from './Carrinho.module.css';
 
+//Component
+import { Btn } from '../../components/Btn';
+
+//Hook
+import { useCarrinhoContext } from '../../hook/useCarrinhoContext';
+
+//React router
+import { useNavigate } from 'react-router-dom';
+
+//React
+import { useEffect } from 'react';
+
+
 export const Carrinho = () => {
+   const navigate = useNavigate();
+
+   const { carrinho, dispatchCarrinho } = useCarrinhoContext();
+
+   const total = carrinho.reduce((acc, p) => acc + p.preco * p.qtd, 0);
+
+   useEffect(() => {
+
+      if(carrinho.length === 0) {
+         navigate('/');
+      }
+
+}, [carrinho, navigate]);
+
+if (carrinho.length === 0) return null;
 
    return (
+   
       <div className={`${style.tabela}`}>
          <table>
             <thead>
@@ -15,28 +44,32 @@ export const Carrinho = () => {
                </tr>
             </thead>
             <tbody>
-               <tr>
-                  <td>bolo</td>
-                  <td>R$ 30</td>
-                  <td>
-                     <Btn>
-                        -
-                     </Btn>
-                     3
-                     <Btn>
-                        +
-                     </Btn>
-                  </td>
-                  <td>90</td>
-               </tr>
-            </tbody>
-            <tfoot>
-               <tr>
-                  <td colSpan={3}>TOTAL</td>
-                  <td>00</td>
-               </tr>
-            </tfoot>
-         </table>
-      </div>
+               {carrinho && carrinho.map((p) => (
+                  <tr key={p.id}>
+                     <td>{p.nome}</td>
+                     <td>{p.preco}</td>
+                     <td>
+                        <Btn onClick={() => dispatchCarrinho({type: "REMOVER_UM", payload: p.id})}>
+                           -
+                        </Btn>
+                        {p.qtd}
+                        <Btn  onClick={() => dispatchCarrinho({type: "ADD_PRODUTO", payload: p})}>
+                           +
+                        </Btn>
+                     </td>
+                     <td>{p.preco * p.qtd}</td>
+                  </tr>
+               ))}
+         </tbody>
+         <tfoot>
+            <tr>
+               <td colSpan={3}>TOTAL</td>
+               <td>{total}</td>
+            </tr>
+         </tfoot>
+      </table>
+
+      <Btn onClick={() => dispatchCarrinho({type: "RESETAR"})}>Limpar Carrinho</Btn>
+      </div >
    )
 };
