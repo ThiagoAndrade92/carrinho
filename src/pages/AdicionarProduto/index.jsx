@@ -27,6 +27,8 @@ export const AdicionarProduto = () => {
          preco
       };
 
+      if(!nome.trim() || !preco.trim()) return;
+
       const res = await fetch(url, {
          method: "POST",
          headers: {
