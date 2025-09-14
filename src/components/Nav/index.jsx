@@ -14,6 +14,10 @@ export const Nav = () => {
          <MeuLink to={'/'}>
             Produtos
          </MeuLink>
+
+         <MeuLink to={'/removerProdutos'}>
+            Remover produtos
+         </MeuLink>
       </nav>
    )
 }

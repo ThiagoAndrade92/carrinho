@@ -9,6 +9,7 @@ import { Nav } from './components/Nav';
 import { AdicionarProduto } from './pages/AdicionarProduto';
 import { Produtos } from './pages/Produtos';
 import { Carrinho } from './pages/Carrinho';
+import { RemoverProduto } from './pages/RemoverProduto';
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<Produtos />} />
         <Route path='/adicionarProdutos' element={<AdicionarProduto />} />
         <Route path='/carrinho' element={<Carrinho />} />
+        <Route path='/removerProdutos' element={<RemoverProduto />} />
       </Routes>
     </>
   )
