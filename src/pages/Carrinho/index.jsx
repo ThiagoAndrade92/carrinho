@@ -49,11 +49,13 @@ if (carrinho.length === 0) return null;
                      <td>{p.nome}</td>
                      <td>{p.preco}</td>
                      <td>
-                        <Btn onClick={() => dispatchCarrinho({type: "REMOVER_UM", payload: p.id})}>
+                        <Btn className={`${style.operador}`} 
+                        onClick={() => dispatchCarrinho({type: "REMOVER_UM", payload: p.id})}>
                            -
                         </Btn>
-                        {p.qtd}
-                        <Btn  onClick={() => dispatchCarrinho({type: "ADD_PRODUTO", payload: p})}>
+                        <span>{p.qtd}</span>
+                        <Btn className={`${style.operador}`} 
+                        onClick={() => dispatchCarrinho({type: "ADD_PRODUTO", payload: p})}>
                            +
                         </Btn>
                      </td>
@@ -69,7 +71,7 @@ if (carrinho.length === 0) return null;
          </tfoot>
       </table>
 
-      <Btn onClick={() => dispatchCarrinho({type: "RESETAR"})}>Limpar Carrinho</Btn>
+      <Btn className={`${style.zerar}`} onClick={() => dispatchCarrinho({type: "RESETAR"})}>Limpar Carrinho</Btn>
       </div >
    )
 };

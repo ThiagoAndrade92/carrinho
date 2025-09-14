@@ -38,7 +38,7 @@ export const Produtos = () => {
                </li>
             ))}
          </ul>
-         {carrinho.length === 0 ? '' : <MeuLink to={'/carrinho'}>Carrinho</MeuLink>}
+         {carrinho.length === 0 ? '' : <MeuLink to={'/carrinho'}>Ver carrinho</MeuLink>}
       </div>
    )
 }
