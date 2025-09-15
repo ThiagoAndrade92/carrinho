@@ -25,7 +25,7 @@ export const Produtos = () => {
 
    return (
       <div className={`${style.produtos}`}>
-         <h1>Carrinho</h1>
+         <h1>Produtos</h1>
          <ul>
             {error && <p>{error}</p>}
             {loading && <p>Carregando dados...</p>}

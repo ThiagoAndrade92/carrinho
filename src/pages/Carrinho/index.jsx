@@ -31,9 +31,16 @@ export const Carrinho = () => {
 
 if (carrinho.length === 0) return null;
 
+const finalizaCompra = () => {
+   alert('Compra finalizada, agradecemos a preferencia 🥰.');
+   dispatchCarrinho({type: "RESETAR"});
+
+};
+
    return (
    
       <div className={`${style.tabela}`}>
+         <h1>Carrinho</h1>
          <table>
             <thead>
                <tr>
@@ -72,6 +79,10 @@ if (carrinho.length === 0) return null;
       </table>
 
       <Btn className={`${style.zerar}`} onClick={() => dispatchCarrinho({type: "RESETAR"})}>Limpar Carrinho</Btn>
+
+      <Btn onClick={() => finalizaCompra()}>
+         Finalzar Compra
+      </Btn>
       </div >
    )
 };

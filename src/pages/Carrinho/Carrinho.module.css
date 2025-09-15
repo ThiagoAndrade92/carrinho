@@ -1,5 +1,7 @@
 .tabela {
-   margin-top: 20px;
+   padding-inline: 5%;
+   max-width: 1000px;
+   margin: 0 auto;
 }
 
 .tabela table {

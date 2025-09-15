@@ -1,13 +1,8 @@
-.center {
-   height: 100%;
-
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
 .form {
-   padding: 10px;
+   padding-inline: 5%;
+   max-width: 1000px;
+   text-align: center;
+   margin: 0 auto;
 }
 
 .form h1 {

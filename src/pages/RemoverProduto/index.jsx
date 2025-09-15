@@ -19,7 +19,9 @@ export const RemoverProduto = () => {
          method: "DELETE",
       });
 
-      setData(prevProduto => prevProduto.filter((p) => p.id !== id))
+      setData(prevProduto => prevProduto.filter((p) => p.id !== id));
+
+      alert('Produto removido!')
 
    };
 

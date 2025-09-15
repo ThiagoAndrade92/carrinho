@@ -7,6 +7,8 @@ import { Label } from "../../components/Label"
 
 //Css
 import style from './AdicionarProduto.module.css';
+
+//Hook
 import { useFetch } from "../../hook/UseFetch";
 
 //url
@@ -38,14 +40,16 @@ export const AdicionarProduto = () => {
       });
 
       const produtoAdicionado = await res.json();
-      setData(prevProduto => [ ...prevProduto, produtoAdicionado])
+      setData(prevProduto => [ ...prevProduto, produtoAdicionado]);
+
+      alert('Produto criado!');
 
       setNome('');
       setPreco('');
    };
 
    return (
-      <div className={style.center}>
+      <div className={style.form}>
       <form onSubmit={handleSubmit}  className={`${style.form}`}>
          <h1>Adicionar produto</h1>
          <Label>

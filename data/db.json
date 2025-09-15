@@ -21,7 +21,12 @@
       "preco": 35
     },
     {
-      "id": "5ffb",
+      "id": "17e9",
+      "nome": "Torta de maçã",
+      "preco": "40"
+    },
+    {
+      "id": "d92c",
       "nome": "Bolo de churros",
       "preco": "50"
     }
