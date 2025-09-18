@@ -1,29 +1,17 @@
 //Css
 import style from './RemoverProduto.module.css';
 
-//Hook
-import { useFetch } from "../../hook/UseFetch";
+//Context
+import { useProdutoContext } from '../../hook/useProdutoContext';
 
 //Component
 import { Btn } from "../../components/Btn";
 
-//url
-const url = 'http://localhost:3000/Produtos';
-
 export const RemoverProduto = () => {
-
-   const { data: produto, setData } = useFetch(url);
-
-   const removerProduto = async (id) => {
-      await fetch(`${url}/${id}`, {
-         method: "DELETE",
-      });
-
-      setData(prevProduto => prevProduto.filter((p) => p.id !== id));
-
-      alert('Produto removido!')
-
-   };
+   
+   const {removerProduto, produto} = useProdutoContext();
+      
+   
 
    return (
       <div className={`${style.remover_produto}`}>

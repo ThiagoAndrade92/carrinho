@@ -7,17 +7,17 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom';
 
 //Provider
-import { CriarProdutoProvider } from './context/CriarProdutoProvider/index.jsx';
+import { ProdutoProvider } from './context/ProdutoProvider/index.jsx';
 import { CarrinhoProvider } from './context/CarrinhoProvider/index.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <CarrinhoProvider>
-      <CriarProdutoProvider>
+      <ProdutoProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </CriarProdutoProvider>
+      </ProdutoProvider>
     </CarrinhoProvider>
   </StrictMode>,
 )

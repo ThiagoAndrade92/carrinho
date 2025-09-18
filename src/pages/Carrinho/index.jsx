@@ -4,36 +4,23 @@ import style from './Carrinho.module.css';
 //Component
 import { Btn } from '../../components/Btn';
 
-//Hook
-import { useCarrinhoContext } from '../../hook/useCarrinhoContext';
-
-//React router
-import { useNavigate } from 'react-router-dom';
-
 //React
-import { useEffect } from 'react';
+import { useCarrinhoContext } from '../../hook/useCarrinhoContext';
+import { useMemo } from 'react';
 
 
 export const Carrinho = () => {
-   const navigate = useNavigate();
 
-   const { carrinho, dispatchCarrinho } = useCarrinhoContext();
+   const {carrinho, addProduto, removerUm, zerarCarrinho} = useCarrinhoContext();
 
-   const total = carrinho.reduce((acc, p) => acc + p.preco * p.qtd, 0);
+   const total = useMemo(() => {
+      return carrinho.reduce((acc, p) => acc + p.preco * p.qtd, 0);
+   }, [carrinho])
 
-   useEffect(() => {
-
-      if(carrinho.length === 0) {
-         navigate('/');
-      }
-
-}, [carrinho, navigate]);
-
-if (carrinho.length === 0) return null;
+if (carrinho.length === 0) return <p>Seu carrinho está vazio</p>;
 
 const finalizaCompra = () => {
    alert('Compra finalizada, agradecemos a preferencia 🥰.');
-   dispatchCarrinho({type: "RESETAR"});
 
 };
 
@@ -56,13 +43,15 @@ const finalizaCompra = () => {
                      <td>{p.nome}</td>
                      <td>{p.preco}</td>
                      <td>
-                        <Btn className={`${style.operador}`} 
-                        onClick={() => dispatchCarrinho({type: "REMOVER_UM", payload: p.id})}>
+                        <Btn className={`${style.operador}`}
+                        onClick={() => removerUm(p)}
+                        >
                            -
                         </Btn>
                         <span>{p.qtd}</span>
                         <Btn className={`${style.operador}`} 
-                        onClick={() => dispatchCarrinho({type: "ADD_PRODUTO", payload: p})}>
+                        onClick={() => addProduto(p)}
+                        >
                            +
                         </Btn>
                      </td>
@@ -78,7 +67,7 @@ const finalizaCompra = () => {
          </tfoot>
       </table>
 
-      <Btn className={`${style.zerar}`} onClick={() => dispatchCarrinho({type: "RESETAR"})}>Limpar Carrinho</Btn>
+      <Btn className={`${style.zerar}`} onClick={() => zerarCarrinho()} >Limpar Carrinho</Btn>
 
       <Btn onClick={() => finalizaCompra()}>
          Finalzar Compra

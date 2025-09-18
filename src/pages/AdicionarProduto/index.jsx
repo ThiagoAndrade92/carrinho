@@ -11,12 +11,15 @@ import style from './AdicionarProduto.module.css';
 //Hook
 import { useFetch } from "../../hook/UseFetch";
 
+//Context
+import { useProdutoContext } from "../../hook/useProdutoContext";
+
 //url
-const url = 'http://localhost:3000/Produtos';
+const urlProduto = 'http://localhost:3000/Produtos';
 
 export const AdicionarProduto = () => {
 
-   const { setData } = useFetch();
+   const { setData } = useProdutoContext();
 
    const [nome, setNome] = useState('');
    const [preco, setPreco] = useState('');
@@ -29,9 +32,9 @@ export const AdicionarProduto = () => {
          preco
       };
 
-      if(!nome.trim() || !preco.trim()) return;
+      if(!nome.trim() || isNaN(preco) || Number(preco) <= 0) return;
 
-      const res = await fetch(url, {
+      const res = await fetch(urlProduto, {
          method: "POST",
          headers: {
             "Content-type": "application/json"

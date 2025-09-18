@@ -1,49 +1,86 @@
-import { createContext, useReducer } from "react";
+import { createContext, useCallback } from "react";
+
+import { useFetch } from "../../hook/UseFetch";
+
+//url
+const urlCarrinho = 'http://localhost:3000/Carrinho';
 
 
 export const CarrinhoContext = createContext();
 
 export const CarrinhoProvider = ({ children }) => {
-   const carrinhoInicial = [];
 
-   const carrinhoReducer = (state, action) => {
-      switch (action.type) {
-         case 'ADD_PRODUTO':
-            const jaExiste = state.find((p) => p.id === action.payload.id);
-            if (jaExiste) {
-               return state.map((p) =>
-                  p.id === action.payload.id
-                     ? { ...p, qtd: p.qtd + 1 }
-                     : p
-               );
-            };
+   const { data:carrinho, setData } = useFetch(urlCarrinho);
 
-            return [...state, { ...action.payload, qtd: 1 }];
-         case "REMOVER_UM":
-            const existe = state.find((p) => p.id === action.payload);
-            if (!existe) return state;
+   const addProduto = async (p) => {
+      const existe = carrinho.find((item) => item.id === p.id);
 
-            if (existe.qtd > 1) {
-               return state.map((p) =>
-                  p.id === action.payload
-                     ? { ...p, qtd: p.qtd - 1 }
-                     : p
-               )
-            }
-            return state.filter((p) => p.id !== action.payload);
+      if (existe) {
+         
+            await fetch(`${urlCarrinho}/${p.id}`, {
+               method: "PATCH",
+               headers: {
+                  "Content-type": "application/json"
+               },
+               body: JSON.stringify({qtd: existe.qtd + 1})
+            });
 
-         case "RESETAR":
-            return [];
-         default:
-            return state
+            setData(carrinho.map((item) => 
+            item.id === p.id 
+         ? {...item, qtd: item.qtd +1}
+      : item))
+
+      } else {
+         const res = await fetch(urlCarrinho, {
+            method: "POST",
+            headers: {
+               "Content-type": "application/json"
+            },
+            body:JSON.stringify({...p, qtd: 1})
+         });
+         const adicionadoNoCarrinho = await res.json();
+         setData([...carrinho, adicionadoNoCarrinho]);
       }
 
    };
 
-   const [carrinho, dispatchCarrinho] = useReducer(carrinhoReducer, carrinhoInicial);
+   const removerUm = async (p) => {
+      const existe = carrinho.find((item) => item.id === p.id);
+
+      if(existe && existe.qtd > 1) {
+         await fetch(`${urlCarrinho}/${p.id}`, {
+            method: "PATCH",
+            headers: {
+               "Content-type": "application/json"
+            },
+            body: JSON.stringify({qtd: existe.qtd -1})
+         });
+         setData(carrinho.map((item) =>
+         item.id === p.id 
+         ? {...item, qtd: item.qtd - 1}
+         : item
+         ))
+      } else if (existe && existe.qtd === 1) {
+         await fetch(`${urlCarrinho}/${p.id}`, {
+            method: "DELETE",
+         });
+
+         setData(carrinho.filter((item) => item.id !== p.id))
+      }
+   }; 
+
+   const zerarCarrinho = useCallback(async () => {
+      setData([]);
+      await Promise.all(
+         carrinho.map((item) => 
+         fetch(`${urlCarrinho}/${item.id}`, { method: "DELETE" })
+      )
+      )
+
+   }, [carrinho, setData]);
 
    return (
-      <CarrinhoContext.Provider value={{ carrinho, dispatchCarrinho }}>
+      <CarrinhoContext.Provider value={{ carrinho, addProduto, removerUm, zerarCarrinho }}>
          {children}
       </CarrinhoContext.Provider>
    )

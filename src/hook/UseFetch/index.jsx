@@ -7,6 +7,9 @@ export const useFetch = (url) => {
    const [error, setError] =useState(null);
 
    useEffect(() => {
+
+      if(!url) return;
+
       const request = async () => {
          try {
             setLoading(true);
@@ -16,10 +19,10 @@ export const useFetch = (url) => {
             const json = await res.json();
 
             setData(json);
-
-            setLoading(false)
          } catch {
-            setError('Houve um erro ao Servidor')
+            setError('Houve um erro ao Servidor');
+         } finally {
+            setLoading(false);
          }
       }
       request();

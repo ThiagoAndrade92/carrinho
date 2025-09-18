@@ -6,22 +6,21 @@ import { useFetch } from '../../hook/UseFetch';
 
 //Components
 import { Btn } from '../../components/Btn';
-
-//url
-const url = 'http://localhost:3000/Produtos';
+import { MeuLink } from '../../components/MeuLink';
 
 //Context
 import { useCarrinhoContext } from '../../hook/useCarrinhoContext';
-import { MeuLink } from '../../components/MeuLink';
+
+//url
+const urlProduto = 'http://localhost:3000/Produtos';
 
 export const Produtos = () => {
 
-   const { data:produto, loading, error } = useFetch(url);
-   const {carrinho, dispatchCarrinho} = useCarrinhoContext();
+   const { data:produto, loading, error } = useFetch(urlProduto);
 
-   const addProduto = (p) => {
-      dispatchCarrinho({type: "ADD_PRODUTO", payload: p});
-   };
+   const {addProduto, carrinho} = useCarrinhoContext();
+
+   
 
    return (
       <div className={`${style.produtos}`}>
