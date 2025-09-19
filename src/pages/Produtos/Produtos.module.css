@@ -33,7 +33,7 @@
 .produtos button {
    border: none;
    margin-top: 5px;
-   background: linear-gradient(to right, #ffa500, #ff4500, #ff0000);
+   background:#ff4500;
    padding: 5px;
    color: #fff;
    cursor: pointer;
@@ -42,7 +42,7 @@
 }
 
 .produtos button:hover {
-   background: linear-gradient(to right, #c98300, #c53501, #cc0101);
+   background:#c53501;
 }
 
 .produtos a {
