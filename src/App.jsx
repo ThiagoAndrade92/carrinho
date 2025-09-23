@@ -1,6 +1,8 @@
 //Css
-import { Route, Routes } from 'react-router-dom';
 import './App.css';
+
+//React router
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 //Components
 import { Nav } from './components/Nav';
@@ -13,11 +15,16 @@ import { RemoverProduto } from './pages/RemoverProduto';
 import { Login } from './pages/Login';
 import { Cadastrar } from './pages/Cadastrar';
 
+
+
 function App() {
+  const location = useLocation();
+
+  const hideNavRoutes = ["/", "/cadastrar"];
 
   return (
     <>
-      <Nav />
+      {!hideNavRoutes.includes(location.pathname) && <Nav />}
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/cadastrar' element={<Cadastrar />} />

@@ -9,18 +9,15 @@ import { BrowserRouter } from 'react-router-dom';
 //Provider
 import { ProdutoProvider } from './context/ProdutoProvider/index.jsx';
 import { CarrinhoProvider } from './context/CarrinhoProvider/index.jsx';
-import { UsuarioProvider } from './context/UsuarioProvider/index.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <UsuarioProvider>
-      <CarrinhoProvider>
-        <ProdutoProvider>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </ProdutoProvider>
-      </CarrinhoProvider>
-    </UsuarioProvider>
+        <CarrinhoProvider>
+          <ProdutoProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </ProdutoProvider>
+        </CarrinhoProvider>
   </StrictMode>,
 )
