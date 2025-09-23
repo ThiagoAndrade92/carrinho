@@ -11,7 +11,7 @@ export const Nav = () => {
             Adicionar produtos
          </MeuLink>
 
-         <MeuLink to={'/produtos'}>
+         <MeuLink to={'/'}>
             Produtos
          </MeuLink>
 

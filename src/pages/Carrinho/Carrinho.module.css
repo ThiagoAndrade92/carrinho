@@ -42,6 +42,9 @@
    padding: 0;
 }
 
+.vazio {
+   text-align: center;
+}
 
 .zerar {
    width: 100px;

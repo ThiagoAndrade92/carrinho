@@ -17,10 +17,11 @@ export const Carrinho = () => {
       return carrinho.reduce((acc, p) => acc + p.preco * p.qtd, 0);
    }, [carrinho])
 
-if (carrinho.length === 0) return <p>Seu carrinho está vazio</p>;
+if (carrinho.length === 0) return <p className={`${style.vazio}`}>Seu carrinho está vazio</p>;
 
 const finalizaCompra = () => {
    alert('Compra finalizada, agradecemos a preferencia 🥰.');
+   zerarCarrinho();
 
 };
 

@@ -21,18 +21,5 @@
       "preco": 35
     }
   ],
-  "Carrinho": [
-    {
-      "id": "3",
-      "nome": "Bolo de milho",
-      "preco": 35,
-      "qtd": 1
-    },
-    {
-      "id": "1",
-      "nome": "Bolo de chocolate",
-      "preco": 50,
-      "qtd": 1
-    }
-  ]
+  "Carrinho": []
 }

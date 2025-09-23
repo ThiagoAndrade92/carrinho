@@ -33,10 +33,7 @@ label {
    color: #505050;
 }
 
-input[type=text],
-input[type=number],
-input[type=password],
-input[type=email] {
+input {
    outline: none;
    border: none;
    border-bottom: 2px solid #ff4500;
@@ -44,10 +41,7 @@ input[type=email] {
    font-size: 1em;
 }
 
-input[type=text]::placeholder,
-input[type=number]::placeholder,
-input[type=email]::placeholder,
-input[type=password]::placeholder {
+input::placeholder {
    color: #a9a9a9;
 }
 
