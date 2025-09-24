@@ -14,18 +14,22 @@ export const RemoverProduto = () => {
    
 
    return (
-      <div className={`${style.remover_produto}`}>
-         <h1>Remover Produtos</h1>
-         <ul>
-            {produto && produto.map((p) => (
-               <li key={p.id}>
-                  {p.nome} - R$: {p.preco}
-                  <Btn onClick={() => removerProduto(p.id)}>
-                     Remover
-                  </Btn>
-               </li>
-            ))}
-         </ul>
+      <div className='container'>
+         <div className={`${style.remover_produto}`}>
+            <h1>Remover Produtos</h1>
+            <ul>
+               {produto && produto.map((p) => (
+                  <li key={p.id}>
+                     <div className={`${style.img}`} style={{backgroundImage: `url(${p.img})`}}>
+                                          </div>
+                     {p.nome} - R$: {p.preco}
+                     <Btn onClick={() => removerProduto(p.id)}>
+                        Remover
+                     </Btn>
+                  </li>
+               ))}
+            </ul>
+         </div>
       </div>
 
    )

@@ -52,29 +52,31 @@ export const AdicionarProduto = () => {
    };
 
    return (
-      <div className={style.form}>
-      <form onSubmit={handleSubmit}  className={`${style.form}`}>
-         <h1>Adicionar produto</h1>
-         <Label>
-            Nome:
-            <Input 
-            type='text'
-            placeholder='Digite o nome do produto'
-            value={nome}
-            onChange={e => setNome(e.target.value)}
-            />
-         </Label>
-         <Label>
-            Preço:
-            <Input 
-            type='number'
-            placeholder='Digite o preço do produto'
-            value={preco}
-            onChange={e => setPreco(e.target.value)}
-            />
-         </Label>
-         <Input type='submit' value='Criar' />
-      </form>
+      <div className="container">
+         <div className={style.form}>
+         <form onSubmit={handleSubmit}>
+            <h1>Adicionar produto</h1>
+            <Label>
+               Nome:
+               <Input
+               type='text'
+               placeholder='Digite o nome do produto'
+               value={nome}
+               onChange={e => setNome(e.target.value)}
+               />
+            </Label>
+            <Label>
+               Preço:
+               <Input
+               type='number'
+               placeholder='Digite o preço do produto'
+               value={preco}
+               onChange={e => setPreco(e.target.value)}
+               />
+            </Label>
+            <Input type='submit' value='Criar' />
+         </form>
+         </div>
       </div>
    )
 }

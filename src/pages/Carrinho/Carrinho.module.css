@@ -4,6 +4,10 @@
    margin: 0 auto;
 }
 
+.tabela h1 {
+   margin-bottom: 10px;
+}
+
 .tabela table {
    width: 100%;
    border-collapse: collapse;
@@ -44,6 +48,8 @@
 
 .vazio {
    text-align: center;
+   color: #a9a9a9;
+   font-size: 1.5em;
 }
 
 .zerar {

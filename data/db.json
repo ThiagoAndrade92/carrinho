@@ -3,22 +3,26 @@
     {
       "id": "1",
       "nome": "Bolo de chocolate",
-      "preco": 50
+      "preco": 50,
+      "img": "../src/assets/images/bolo-de-chocolate.webp"
     },
     {
       "id": "2",
-      "nome": "Bolo de cenoura",
-      "preco": 50
+      "nome": "Bolo de cenoura com cobertura de chocolate",
+      "preco": 50,
+      "img": "../src/assets/images/bolo-de-cenoura-com-cobertura-chocolate.webp"
     },
     {
       "id": "3",
       "nome": "Bolo de milho",
-      "preco": 35
+      "preco": 35,
+      "img": "../src/assets/images/bolo-de-milho.jpg"
     },
     {
       "id": "4",
       "nome": "Bolo formigueiro",
-      "preco": 35
+      "preco": 35,
+      "img": "../src/assets/images/bolo-formigueiro.jpg"
     }
   ],
   "Carrinho": []

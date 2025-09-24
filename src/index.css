@@ -4,9 +4,22 @@
    box-sizing: border-box;
 }
 
-body,html {
+body, html {
    height: 100%;
    font-size: 16px;
+}
+
+#root {
+   height: 100%;
+}
+
+.container {
+   height: calc(100% - 8vh);
+
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: center;
 }
 
 button {
@@ -59,4 +72,11 @@ input[type='submit'] {
 
 input[type='submit']:hover {
 background:#c53501;
+}
+
+@media (max-width: 576px) {
+   .container {
+   display: inherit;
+   margin: 0 auto;
+}
 }
