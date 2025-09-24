@@ -1,10 +1,13 @@
 .nav {
    width: 100%;
-   padding: 5px;
    margin-bottom: 2%;
    border-bottom: 2px solid orangered;
    padding: 10px;
    text-align: center;
+}
+
+.nav_mobile {
+   display: none
 }
 
 .nav a {
@@ -20,12 +23,96 @@
    height: 2px;
    width: 0;
    background-color: #ff0000;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transition: width .3s ease-in;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   transition: width .3s ease-in;
 }
 
 .nav a:hover::after {
    width: 100%;
+}
+
+@media (max-width: 576px) {
+   .nav {
+      display: none;
+   }
+
+   .nav_mobile {
+      display: block;
+
+      width: 100%;
+      border-bottom: 2px solid orangered;
+      padding: 5px;
+      position: relative;
+   }
+
+   .menu {
+      width: 40px;
+      height: 40px;
+      border: 1px solid black;
+      border-radius: 4px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+      cursor: pointer;
+   }
+
+   .line1,
+   .line2,
+   .line3 {
+      height: 3px;
+      width: 30px;
+      background-color: black;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+      transition: all .3s ease-in-out;
+   }
+
+   .line1Active {
+      transform: rotate(45deg) translate(5px, 5px);
+   }
+
+   .line2Active {
+      display: none;
+   }
+
+   .line3Active {
+      transform: rotate(-45deg) translate(5px, -5px);
+   }
+
+   .link {
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      background-color: #ff4500;
+      text-align: start;
+      width: 40%;
+
+      display: flex;
+      flex-direction: column;
+
+      transform: translate(-100vw);
+      transition: all .3s ease-in-out;
+   }
+
+   .linkActive {
+      transform: translate(0);
+   }
+
+   .link a {
+      text-decoration: none;
+      color: #fff;
+      padding: 5px;
+      margin-block: 10px;
+   }
+
 }
