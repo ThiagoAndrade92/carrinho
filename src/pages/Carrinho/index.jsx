@@ -70,7 +70,7 @@ const finalizaCompra = () => {
 
       <Btn className={`${style.zerar}`} onClick={() => zerarCarrinho()} >Limpar Carrinho</Btn>
 
-      <Btn onClick={() => finalizaCompra()}>
+      <Btn className={`${style.finalizar_compra}`} onClick={() => finalizaCompra()}>
          Finalzar Compra
       </Btn>
       </div >

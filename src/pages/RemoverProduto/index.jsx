@@ -7,6 +7,9 @@ import { useProdutoContext } from '../../hook/useProdutoContext';
 //Component
 import { Btn } from "../../components/Btn";
 
+//Image
+import imgPadrao from '../../assets/images/imagem-padrao.png';
+
 export const RemoverProduto = () => {
    
    const {removerProduto, produto} = useProdutoContext();
@@ -20,7 +23,7 @@ export const RemoverProduto = () => {
             <ul>
                {produto && produto.map((p) => (
                   <li key={p.id}>
-                     <div className={`${style.img}`} style={{backgroundImage: `url(${p.img})`}}>
+                     <div className={`${style.img}`} style={{backgroundImage: `url(${p.img || imgPadrao})`}}>
                                           </div>
                      {p.nome} - R$: {p.preco}
                      <Btn onClick={() => removerProduto(p.id)}>

@@ -14,6 +14,9 @@ import { useCarrinhoContext } from '../../hook/useCarrinhoContext';
 //url
 const urlProduto = 'http://localhost:3000/Produtos';
 
+//image
+import imgPadrao from '../../assets/images/imagem-padrao.png'
+
 export const Produtos = () => {
 
    const { data:produto, loading, error } = useFetch(urlProduto);
@@ -31,7 +34,7 @@ export const Produtos = () => {
                {loading && <p>Carregando dados...</p>}
                {produto && produto.map((p) => (
                   <li key={p.id}>
-                     <div className={`${style.img}`} style={{backgroundImage: `url(${p.img})`}}>
+                     <div className={`${style.img}`} style={{backgroundImage: `url(${p.img || imgPadrao})` }}>
                      </div>
                      {p.nome} - R$: {p.preco}
                      <Btn onClick={() => addProduto(p)}>

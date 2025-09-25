@@ -53,6 +53,20 @@
 }
 
 .zerar {
+   background-color: #ff0000;
    width: 100px;
-   margin: 10px 0 0 5px;
+   margin: 10px 20px 0 5px;
+}
+
+.zerar:hover {
+   background-color: #d30202;
+}
+
+.finalizar_compra {
+   background-color: #ffa500;
+   color: #000;
+}
+
+.finalizar_compra:hover {
+   background-color: #db9003;
 }
