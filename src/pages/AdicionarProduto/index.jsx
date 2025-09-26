@@ -1,5 +1,5 @@
 //React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //Components
 import { Input } from "../../components/Input"
@@ -23,15 +23,16 @@ export const AdicionarProduto = () => {
 
    const [nome, setNome] = useState('');
    const [preco, setPreco] = useState('');
-
+   const [success, setSuccess] = useState(false);
+   
    const handleSubmit = async (e) => {
       e.preventDefault();
-
+      
       const novoProduto = {
          nome,
          preco
       };
-
+      
       if(!nome.trim() || isNaN(preco) || Number(preco) <= 0) return;
 
       const res = await fetch(urlProduto, {
@@ -45,14 +46,28 @@ export const AdicionarProduto = () => {
       const produtoAdicionado = await res.json();
       setData(prevProduto => [ ...prevProduto, produtoAdicionado]);
 
-      alert('Produto criado!');
-
+      setSuccess(true);
+      
       setNome('');
       setPreco('');
    };
+   
+   useEffect(() => {
+      if (success) {
+     const timer = setTimeout(() => {
+          setSuccess(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+
+   }
+   }, [success]);
 
    return (
       <div className="container">
+         <div className={`${style.success} ${success ? style.active : ''}`}>
+            <p>Produto criado!</p>
+         </div>
          <div className={style.form}>
          <form onSubmit={handleSubmit}>
             <h1>Adicionar produto</h1>

@@ -25,5 +25,13 @@
       "img": "../src/assets/images/bolo-formigueiro.jpg"
     }
   ],
-  "Carrinho": []
+  "Carrinho": [
+    {
+      "id": "1",
+      "nome": "Bolo de chocolate",
+      "preco": 50,
+      "img": "../src/assets/images/bolo-de-chocolate.webp",
+      "qtd": 1
+    }
+  ]
 }

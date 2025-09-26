@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CriarContext = createContext();
 
@@ -12,6 +12,12 @@ export const ProdutoProvider = ({children}) => {
    
    const { data: produto, setData } = useFetch(urlProduto);
 
+   const [remover, setRemover] = useState(false);
+
+   
+
+      
+
    const removerProduto = async (id) => {
             await fetch(`${urlProduto}/${id}`, {
                method: "DELETE",
@@ -19,12 +25,23 @@ export const ProdutoProvider = ({children}) => {
       
             setData(prevProduto => prevProduto.filter((p) => p.id !== id));
       
-            alert('Produto removido!')
+            setRemover(true);
       
          };
 
+         useEffect(() => {
+               if (remover) {
+              const timer = setTimeout(() => {
+                   setRemover(false);
+               }, 3000);
+         
+               return () => clearTimeout(timer);
+         
+            }
+            }, [remover]);
+
    return (
-      <CriarContext.Provider value={{produto, setData, removerProduto}}>
+      <CriarContext.Provider value={{produto, setData, removerProduto, remover}}>
          {children}
       </CriarContext.Provider>
    )

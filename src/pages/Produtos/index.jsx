@@ -18,15 +18,18 @@ const urlProduto = 'http://localhost:3000/Produtos';
 import imgPadrao from '../../assets/images/imagem-padrao.png'
 
 export const Produtos = () => {
-
-   const { data:produto, loading, error } = useFetch(urlProduto);
-
-   const {addProduto, carrinho} = useCarrinhoContext();
-
    
-
+   const { data: produto, loading, error } = useFetch(urlProduto);
+   
+   const { addProduto, carrinho, sucesso } = useCarrinhoContext();
+   
+   const total = carrinho.reduce((acc, p) => acc + p.qtd, 0 );
+   
    return (
       <div className='container'>
+         <div className={`${style.sucesso} ${sucesso ? style.active : ''}`}>
+                     <p>Produto adicionado!</p>
+                  </div>
          <div className={`${style.produtos}`}>
             <h1>Produtos</h1>
             <ul>
@@ -34,7 +37,7 @@ export const Produtos = () => {
                {loading && <p>Carregando dados...</p>}
                {produto && produto.map((p) => (
                   <li key={p.id}>
-                     <div className={`${style.img}`} style={{backgroundImage: `url(${p.img || imgPadrao})` }}>
+                     <div className={`${style.img}`} style={{ backgroundImage: `url(${p.img || imgPadrao})` }}>
                      </div>
                      {p.nome} - R$: {p.preco}
                      <Btn onClick={() => addProduto(p)}>
@@ -43,7 +46,17 @@ export const Produtos = () => {
                   </li>
                ))}
             </ul>
-            {carrinho.length === 0 ? '' : <MeuLink to={'/carrinho'}>Ver carrinho</MeuLink>}
+
+            <footer className={`${style.footer} ${carrinho.length === 0 ? '' : style.active}`}>
+               {carrinho.length === 0 ? '' : 
+
+<MeuLink to={'/carrinho'}>
+                     <div className={`${style.qtd}`}>{total}</div>
+                     Ver carrinho
+                  </MeuLink>
+               }
+            </footer>
+
          </div>
       </div>
    )

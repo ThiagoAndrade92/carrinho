@@ -11,20 +11,22 @@ import { Btn } from "../../components/Btn";
 import imgPadrao from '../../assets/images/imagem-padrao.png';
 
 export const RemoverProduto = () => {
-   
-   const {removerProduto, produto} = useProdutoContext();
-      
-   
+
+   const { removerProduto, produto, remover } = useProdutoContext();
+
 
    return (
       <div className='container'>
+         <div className={`${style.remover} ${remover ? style.active : ''}`}>
+            <p>Produto removido!</p>
+         </div>
          <div className={`${style.remover_produto}`}>
             <h1>Remover Produtos</h1>
             <ul>
                {produto && produto.map((p) => (
                   <li key={p.id}>
-                     <div className={`${style.img}`} style={{backgroundImage: `url(${p.img || imgPadrao})`}}>
-                                          </div>
+                     <div className={`${style.img}`} style={{ backgroundImage: `url(${p.img || imgPadrao})` }}>
+                     </div>
                      {p.nome} - R$: {p.preco}
                      <Btn onClick={() => removerProduto(p.id)}>
                         Remover
