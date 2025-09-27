@@ -23,15 +23,42 @@
       "nome": "Bolo formigueiro",
       "preco": 35,
       "img": "../src/assets/images/bolo-formigueiro.jpg"
+    },
+    {
+      "id": "81f8",
+      "nome": "adwad",
+      "preco": "23"
+    },
+    {
+      "id": "7bec",
+      "nome": "efdsf",
+      "preco": "435"
+    },
+    {
+      "id": "83a2",
+      "nome": "jhfty",
+      "preco": "987"
+    },
+    {
+      "id": "52ac",
+      "nome": "sdaw",
+      "preco": "44"
+    },
+    {
+      "id": "c269",
+      "nome": "awda",
+      "preco": "324"
+    },
+    {
+      "id": "8d85",
+      "nome": "fgfgfg",
+      "preco": "4"
+    },
+    {
+      "id": "464e",
+      "nome": "awdsad",
+      "preco": "123"
     }
   ],
-  "Carrinho": [
-    {
-      "id": "1",
-      "nome": "Bolo de chocolate",
-      "preco": 50,
-      "img": "../src/assets/images/bolo-de-chocolate.webp",
-      "qtd": 1
-    }
-  ]
+  "Carrinho": []
 }

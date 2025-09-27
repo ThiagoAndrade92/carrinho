@@ -24,16 +24,16 @@ export const AdicionarProduto = () => {
    const [nome, setNome] = useState('');
    const [preco, setPreco] = useState('');
    const [success, setSuccess] = useState(false);
-   
+
    const handleSubmit = async (e) => {
       e.preventDefault();
-      
+
       const novoProduto = {
          nome,
          preco
       };
-      
-      if(!nome.trim() || isNaN(preco) || Number(preco) <= 0) return;
+
+      if (!nome.trim() || isNaN(preco) || Number(preco) <= 0) return;
 
       const res = await fetch(urlProduto, {
          method: "POST",
@@ -44,54 +44,52 @@ export const AdicionarProduto = () => {
       });
 
       const produtoAdicionado = await res.json();
-      setData(prevProduto => [ ...prevProduto, produtoAdicionado]);
+      setData(prevProduto => [...prevProduto, produtoAdicionado]);
 
       setSuccess(true);
-      
+
       setNome('');
       setPreco('');
    };
-   
+
    useEffect(() => {
       if (success) {
-     const timer = setTimeout(() => {
-          setSuccess(false);
-      }, 3000);
+         const timer = setTimeout(() => {
+            setSuccess(false);
+         }, 3000);
 
-      return () => clearTimeout(timer);
+         return () => clearTimeout(timer);
 
-   }
+      }
    }, [success]);
-
+  
    return (
-      <div className="container">
+      <div className={style.form}>
          <div className={`${style.success} ${success ? style.active : ''}`}>
             <p>Produto criado!</p>
          </div>
-         <div className={style.form}>
          <form onSubmit={handleSubmit}>
             <h1>Adicionar produto</h1>
             <Label>
                Nome:
                <Input
-               type='text'
-               placeholder='Digite o nome do produto'
-               value={nome}
-               onChange={e => setNome(e.target.value)}
+                  type='text'
+                  placeholder='Digite o nome do produto'
+                  value={nome}
+                  onChange={e => setNome(e.target.value)}
                />
             </Label>
             <Label>
                Preço:
                <Input
-               type='number'
-               placeholder='Digite o preço do produto'
-               value={preco}
-               onChange={e => setPreco(e.target.value)}
+                  type='number'
+                  placeholder='Digite o preço do produto'
+                  value={preco}
+                  onChange={e => setPreco(e.target.value)}
                />
             </Label>
             <Input type='submit' value='Criar' />
          </form>
-         </div>
       </div>
    )
 }
