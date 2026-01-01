@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+
+    "strict": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+
+    "noEmit": true,
+
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    "types": ["vite/client"]
+  }
+}
+

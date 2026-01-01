@@ -2,62 +2,33 @@
   "Produtos": [
     {
       "id": "1",
-      "nome": "Bolo de chocolate",
-      "preco": 50,
+      "title": "Bolo de chocolate",
+      "price": 50,
       "img": "../src/assets/images/bolo-de-chocolate.webp"
     },
     {
       "id": "2",
-      "nome": "Bolo de cenoura com cobertura de chocolate",
-      "preco": 50,
+      "title": "Bolo de cenoura com cobertura de chocolate",
+      "price": 50,
       "img": "../src/assets/images/bolo-de-cenoura-com-cobertura-chocolate.webp"
     },
     {
       "id": "3",
-      "nome": "Bolo de milho",
-      "preco": 35,
+      "title": "Bolo de milho",
+      "price": 35,
       "img": "../src/assets/images/bolo-de-milho.jpg"
     },
     {
       "id": "4",
-      "nome": "Bolo formigueiro",
-      "preco": 35,
+      "title": "Bolo formigueiro",
+      "price": 35,
       "img": "../src/assets/images/bolo-formigueiro.jpg"
     },
     {
-      "id": "81f8",
-      "nome": "adwad",
-      "preco": "23"
-    },
-    {
-      "id": "7bec",
-      "nome": "efdsf",
-      "preco": "435"
-    },
-    {
-      "id": "83a2",
-      "nome": "jhfty",
-      "preco": "987"
-    },
-    {
-      "id": "52ac",
-      "nome": "sdaw",
-      "preco": "44"
-    },
-    {
-      "id": "c269",
-      "nome": "awda",
-      "preco": "324"
-    },
-    {
-      "id": "8d85",
-      "nome": "fgfgfg",
-      "preco": "4"
-    },
-    {
-      "id": "464e",
-      "nome": "awdsad",
-      "preco": "123"
+      "id": "5e80",
+      "title": "Bolo de Abacate com ninho",
+      "price": 60,
+      "img": ""
     }
   ],
   "Carrinho": []
